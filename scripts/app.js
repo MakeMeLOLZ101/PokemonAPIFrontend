@@ -51,7 +51,7 @@ async function searchPokemon() {
     if (!searchInput) return;
 
     try {
-        const response = await fetch(`https://pokeapi.co/api/v2/api/Pokemon/${searchInput.toLowerCase()}`);
+        const response = await fetch(`https://pokeapi.co/api/v2/Pokemon/${searchInput.toLowerCase()}`);
         if (!response.ok) throw new Error('Pokemon not found');
         
         const pokemon = await response.json();
@@ -65,7 +65,7 @@ async function searchPokemon() {
 // Update the fetch call in getRandomPokemon function
 async function getRandomPokemon() {
     try {
-        const response = await fetch(`https://pokeapi.co/api/v2/api/Pokemon/random`);
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/random`);
         if (!response.ok) throw new Error('Failed to get random Pokemon');
         
         const pokemon = await response.json();
