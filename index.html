@@ -3,9 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pokémon Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Search Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div class="flex flex-col md:flex-row gap-4 mb-4">
+                <input type="text" id="searchInput" 
+                    class="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                    placeholder="Enter Pokémon name or number">
+                <button onclick="searchPokemon()" 
+                    class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                    Search
+                </button>
+                <button onclick="getRandomPokemon()" 
+                    class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                    Random
+                </button>
+            </div>
+        </div>
+
+        <!-- Pokemon Display -->
+        <div id="pokemonDisplay" class="hidden">
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                    <div>
+                        <h1 id="pokemonName" class="text-3xl font-bold mb-2"></h1>
+                        <p id="pokemonNumber" class="text-xl text-gray-600"></p>
+                    </div>
+                    <div class="flex gap-4">
+                        <button id="shinyToggle" 
+                            class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors">
+                            Toggle Shiny
+                        </button>
+                        <button id="favoriteToggle" 
+                            class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">
+                            ♥ Favorite
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div>
+                        <img id="pokemonSprite" class="w-64 h-64 mx-auto mb-4" alt="Pokemon sprite">
+                        <div class="flex flex-wrap gap-2 justify-center" id="pokemonTypes">
+                            <!-- Types will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="space-y-4">
+                        <div>
+                            <h2 class="text-xl font-bold mb-2">Location</h2>
+                            <p id="pokemonLocation"></p>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-xl font-bold mb-2">Evolution Chain</h2>
+                            <div id="evolutionChain"></div>
+                        </div>
+
+                        <div>
+                            <h2 class="text-xl font-bold mb-2">Abilities</h2>
+                            <div id="pokemonAbilities"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h2 class="text-xl font-bold mb-2">Moves</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2" id="pokemonMoves">
+                        <!-- Moves will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Favorites Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-4">Favorites</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" id="favoritesList">
+                    <!-- Favorites will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-8">
+            <span id="errorText"></span>
+        </div>
+    </div>
+
+    <script src="./scripts/app.js"></script>
 </body>
 </html>
